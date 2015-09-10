@@ -20,7 +20,7 @@ module.exports = function (callback) {
     .version('4.0.2')
     .option('-t, --tablet', 'Create a tablet version')
     .option('-s, --scale', 'Enable application window scaling')
-    .option('-n, --name [value]', 'Extension display name')
+    .option('-n, --ext-name [value]', 'Extension display name')
     .usage('<path_to_apk_file ...>')
     .parse(process.argv);
 
@@ -28,7 +28,8 @@ module.exports = function (callback) {
   callback = callback || success;
 
   if (!apk) {
-    throw new Error('Please provide a path to an APK file...');
+    program.outputHelp();
+    process.exit(0);
   }
 
   parseApk(apk, function (err, data) {
@@ -89,8 +90,8 @@ module.exports = function (callback) {
         manifest.arc_metadata.packageName = packageName;
         manifest.version = '1337';
 
-        if (program.name) {
-          messages.extName.message = program.name;
+        if (program.extName) {
+          messages.extName.message = program.extName;
         } else if (packageName) {
           messages.extName.message = packageName;
         } else {

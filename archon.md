@@ -5,21 +5,18 @@
 <img src="http://v14d.com/g/WinApk.jpg" width="350px" />
 <img src="http://v14d.com/g/multiple.png" width="350px" />
 
-## Instructions
-
 <img src="http://v14d.com/g/chromeapks/ARChonLogo.png" height="100" /> 
-**Note: This can be unstable on operating systems other than Chrome OS.**
 
 **Warning: The custom runtime will replace the official runtime component. To go back to the official runtime you will need to uninstall the custom one and reinstall the official one.**
 
-Tested on OS X, Windows 64-bit and Ubuntu. You must have Chrome 37+ installed. (If it doesn't work try Chrome Canary).
+# Visit [archon-runtime.github.io](http://archon-runtime.github.io/) for latest releases
 
 - Download the runtime that is appropriate for your system: 
 
 | Runtime  | Download |
 |---|---|
-| ARChon 1.2 - Intel x86 **Chrome 64-bit / Chrome OS 64-bit** (OSX: Use this in Chrome Canary)  |  [BitBucket](https://bitbucket.org/vladikoff/archon/get/v1.2-x86_64.zip) :: [Mirror](http://archon.vf.io/ARChon-v1.2-x86_64.zip) MD5:d77b468339cc512e121c003cc97715db |
-| ARChon 1.2 - Intel x86 **Chrome 32-bit / Chrome OS 32-bit** (OSX: Use this in Chrome Stable) (Win7 32-bit: Use something like Chrome Beta 38.0.2125.77 beta-m) | [BitBucket](https://bitbucket.org/vladikoff/archon/get/v1.2-x86_32.zip) :: [Mirror](http://archon.vf.io/ARChon-v1.2-x86_32.zip) MD5:9c9844e2591a27d952098581011a2bce |
+| ARChon 1.2 - Intel x86 **Chrome 64-bit / Chrome OS 64-bit**  |  [BitBucket](https://bitbucket.org/vladikoff/archon/get/v1.2-x86_64.zip) :: [Mirror](http://archon.vf.io/ARChon-v1.2-x86_64.zip) MD5:d77b468339cc512e121c003cc97715db |
+| ARChon 1.2 - Intel x86 **Chrome 32-bit / Chrome OS 32-bit**  (Win7 32-bit: Use something like Chrome Beta 38.0.2125.77 beta-m) | [BitBucket](https://bitbucket.org/vladikoff/archon/get/v1.2-x86_32.zip) :: [Mirror](http://archon.vf.io/ARChon-v1.2-x86_32.zip) MD5:9c9844e2591a27d952098581011a2bce |
 | ARChon 1.2 - **ARM (i.e ARM-based Chromebooks)**  | [BitBucket](https://bitbucket.org/vladikoff/archon/get/v1.2-ARM.zip) :: [Mirror](http://archon.vf.io/ARChon-v1.2-ARM.zip) MD5:3d6955c7702baf1e1d16a000d9f67b10   |
 
 
@@ -68,6 +65,21 @@ Find `tablet: {"long": 1280, "short": 800}`, tweak it, fit your resolution, relo
 
 Add `"resize": "scale"` to `"arc_metadata"` in `manifest.json`.
 
+**How to adjust font size**
+
+1. Modify the two files (gen_index.min.js and gen_main.min.js).
+
+2. Search a.prototype.computeValues_.
+
+3. Change the value of a.prototype.computeValues_.
+
+4. Let the value c double. Just like the following codes.
+```JavaScript
+a.prototype.computeValues_ = function (a) {
+    var c = 2*window.devicePixelRatio / getCurrentZoom() 
+    .....
+}
+```
 Read [the manifest guide](manifest.md) for more advanced tweaks.
 
 ### Older downloads
